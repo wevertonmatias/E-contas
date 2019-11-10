@@ -1,0 +1,42 @@
+{% extends 'admin/base.html' %}
+{% load bootstrap %}
+{% block content %}
+    <a href="{% url 'sistema' %}"><h1>Painel Gerenciador</h1></a>
+    <h1>Lista de Empresas</h1>
+    <h1><a href="{% url 'cadastrar_empresa' %}"> Cadastrar Empresa +</a></h1>
+
+    {% for empresa in object_list %}
+        <div style="border:1px solid;padding-left:5px; margin-bottom:5px:5px; margin-bottom:5px">
+            <h2>Razao Social</h2>
+            <h3>{{ empresa.razaoSocial }}</h3>
+            <h2>Nome Fantasia</h2>
+            <h3>{{ empresa.nomeFantasia }}</h3>
+            <a href="{% url 'atualizar_empresa' empresa.pk %}"> Atualizar Empresa</a>
+            <br>
+            <a href="{% url 'detalhe_empresa' empresa.pk %}">Mostrar Mais</a>
+        </div>
+    {% endfor %}
+
+{% if is_paginated %}
+    <div class="pagination container" style="border-top: 1px solid gray; padding-top:25px;margin-top: 25px; margin-bottom: 25px;">
+    <span class="page-links">
+        <div class="col-md-5">
+        {% if page_obj.has_previous %}
+        <a href="?page={{ page_obj.previous_page_number }}" class="btn btn-default btn-flat">Anterior</a>
+        {% endif %}
+        </div>
+    <div class="col-md-5">
+    <span class="page-current">
+        Página {{ page_obj.number }} de {{ page_obj.paginator.num_pages }}.
+    </span>
+    </div>
+    {% if page_obj.has_next %}
+        <div class="col-md-2">
+        <a href="?page={{ page_obj.next_page_number }}" class="btn btn-default btn-flat ">Próximo</a>
+    </div>
+    {% endif %}
+    </span>
+</div>
+{% endif %}
+
+{% endblock %}

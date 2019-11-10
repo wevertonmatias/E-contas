@@ -1,0 +1,43 @@
+{% load static %}
+<!doctype html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>Home-CompreAqui</title>
+    <meta charset="utf-8">
+    {% include 'site/common/link.html' %}
+
+</head>
+<body>
+
+<div class="container-fluid">
+    <div class="row">
+        <div class="col"></div>
+
+
+        <div class="border m2 border-dark col">
+            <div class="form-group row m-1">
+                <h1 class="text-center">Painel Gerenciador</h1>
+            </div>
+            <div class="m1">
+                    <h1>Gerenciamento</h1>
+                    <h4>Empresa</h4>
+                        <h7><a href=" {% url 'listar_empresa' %} ">Acessar</a></h7>
+                    <h4>Fornecedor</h4>
+                        <h7><a href="{% url 'listar_fornecedor' %}">Acessar</a></h7>
+                    <h4>Pagamentos</h4>
+                        <h7><a href="{% url 'listar_pagamento' %}">Acessar</a></h7>
+                    <h4>Gráficos</h4>
+                        <h7><a href="{% url 'graficos' %}">Acessar</a></h7>
+            </div>
+        </div>
+
+
+        <div class="col"></div>
+    </div>
+
+</div>
+
+{% include 'site/common/script.html' %}
+</body>
+</html>

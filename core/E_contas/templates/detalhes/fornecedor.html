@@ -1,0 +1,13 @@
+{% extends 'admin/base.html' %}
+[% load bootstrap %}
+{% block content %}
+
+<h5>Código.{{object.pk}}</h5>
+<h3>Razão Social: {{ object.razaoSocial }}</h3>
+<h3>Nome Fantasia: {{ object.nomeFantasia }}</h3>
+<h3>CNPJ/CPF: {{object.cnpj_cpf}}</h3>
+<h3>Telefone: {{ object.telefone }}</h3>
+<h3>Tipo de Parceria: {{ object.tipo_de_parceria }}</h3>
+    <br>
+<a href="{% url 'listar_fornecedor' %}"> <input type="submit" value="Voltar"> </a>
+{% endblock %}
