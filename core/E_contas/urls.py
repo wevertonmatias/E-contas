@@ -21,7 +21,8 @@ urlpatterns = [
     # path('cadastro/evento/', EventoForm.as_view(), name='cadastrar_evento'),
     # path('cadastro/categoria_evento',CategoriaEventoForm.as_view(),name='cadastrar_categoria_evento'),
     path('grafico/', Grafico.as_view(), name='grafico'),
-    # path('graficos/', GraficoPagamento, name='graficos'),
+    # path('relatorio/pagamento', RelPagamento, name='relatorio_pagamento'),
+    path('graficos/', GraficoPagamento, name='graficos'),
     path('ws/total-cidade-por-etado', WebService.total_cidade_por_estado, name='totalcidades'),
 
     path('', Index.as_view(), name="index"),

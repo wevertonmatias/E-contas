@@ -1,63 +1,116 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>ChartJS</title>
-</head>
-<body>
-    <div>
-    <canvas class="myChart"></canvas>
-    <script src="https://cdn.jsdelivr.net/npm/chart.js@2.8.0"></script>
+{% extends 'admin/index.html' %}
+{% load static %}
+{% include 'site/common/link.html' %}
+{% load l10n %}
+{% block content %}
 
-    <script>
-        var ctx = document.getElementsByClassName("myChart");
 
-        var ChartGraph = new Chart(ctx, {
-            type: 'line',
-            data: {
-                labels: ["jan","fev","mar"],
-                datasets:[
-                    {
-                    label: "Taxa de Cliques-2017",
-                    data:[5,7,2],
-                    borderWidth: 6,
-                    borderColor: "rgba(77,166,253,0.085)",
-                    backgroundColor: "transparent",
-                    },
-                    {
-                    label: "Taxa de Cliques-2018",
-                    data:[2,4,7],
-                    borderWidth: 6,
-                    borderColor: "rgba(77,16,23,0.085)",
-                    backgroundColor: "transparent",
-                    },
+<h1>
+    Gráficos
+</h1>
 
-                 ]
-            }
-        });
-    </script>
-    </div>
 
-    <canvas class="teste"></canvas>
-    <script src="https://cdn.jsdelivr.net/npm/chart.js@2.8.0"></script>
-
-    <script>
-        var ctx = document.getElementsByClassName("teste");
+<div id="content-main">
+    <div class="app-E_contas module">
+        <canvas class="grafico1"></canvas>
+        <script src="https://cdn.jsdelivr.net/npm/chart.js@2.8.0"></script>
+        <script>
+        var ctx = document.getElementsByClassName("grafico1");
 
         var ChartGraph = new Chart(ctx, {
-            type: 'pie',
-            data: {
-                datasets: [{
-                    data: [10, 20, 30],
-                    label: "Taxa de Cliques-2017",
-                    borderWidth: 2,
-                    backgroundColor: "rgba(25,249,169)",
-                }],
-                labels: ['Red','Yellow','Blue']
-            }
-        });
-    </script>
+            type: 'bar',
+            type: 'bar',
+    data: {
+        labels: ['Pagar', 'Receber'],
+        datasets: [{
+            label: 'TOTAL de Contas a Pagar VS Receber',
+            data: [{{pagar.valor__sum.normalize|unlocalize}},
+                    {{receber.valor__sum.normalize|unlocalize}},
+                    ],
+            backgroundColor: [
+                'rgba(255, 99, 132, 0.2)',
+                'rgba(54, 162, 235, 0.2)',
+            ],
+            borderColor: [
+                'rgba(255, 99, 132, 1)',
+                'rgba(54, 162, 235, 1)',
+
+            ],
+            borderWidth: 1
+        }]
+    },
+    options: {
+        scales: {
+            yAxes: [{
+                ticks: {
+                    beginAtZero: true
+                }
+            }]
+        }
+    }
+});
+
+
+
+
+
+
+        </script>
     </div>
 
-</body>
-</html>
+    <div class="app-E_contas module">
+        <canvas class="grafico2"></canvas>
+        <script src="https://cdn.jsdelivr.net/npm/chart.js@2.8.0"></script>
+        <script>
+
+        var total = 3.5 * 7;
+        var ctx = document.getElementsByClassName("grafico2");
+        var ChartGraph = new Chart(ctx, {
+            type: 'bar',
+    data: {
+        labels: [
+        {% for empresa in empresas %}
+            '{{ empresa.razao_social }}',
+        {%endfor%}
+                ,],
+        datasets: [{
+            label: 'TOTAL de Contas a Pagar por Empresa',
+            data: [
+                {% for valor in valores %}
+                    {{ valor.valor__sum.normalize|unlocalize}},
+                {% endfor %}
+            ],
+            backgroundColor: [
+                'rgba(255, 99, 132, 0.2)',
+                'rgba(54, 162, 235, 0.2)',
+            ],
+             borderColor: [
+                'rgba(255, 99, 132, 1)',
+                'rgba(54, 162, 235, 1)',
+
+            ],
+            borderWidth: 1
+        }]
+    },
+    options: {
+        scales: {
+            yAxes: [{
+                ticks: {
+                    beginAtZero: true
+                }
+            }]
+        }
+    }
+});
+
+{% for valor in valores %}
+console.log(total.toString().replace(",", "."))
+{% endfor %}
+
+        </script>
+    </div>
+
+
+</div>
+{% include 'site/common/script.html' %}
+{%endblock%}

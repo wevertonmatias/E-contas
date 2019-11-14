@@ -8,6 +8,7 @@ from django.contrib import admin
 
 urlpatterns = [
     path('admin/', admin.site.urls),
+    path('admin/', admin.site.urls), path('baton/', include('baton.urls')),
     path('econtas/', include(econtas_urls)),
 ] + static(settings.MEDIA_URL,
            doccument_root=settings.MEDIA_ROOT)
