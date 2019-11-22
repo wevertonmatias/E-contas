@@ -1,0 +1,18 @@
+{% extends 'adm/gerenciamento/detalhe/detalhe_base.html' %}
+{% load bootstrap %}
+{% block link-nav-gerenciamento-selecionado-tipo %}
+> Empresa
+{% endblock %}
+{% block div-1 %}
+<ul class="list-group">
+  <li class="list-group-item">Código. {{object.pk}}</li>
+  <li class="list-group-item">Razão Social: {{ object.razao_social }}</li>
+  <li class="list-group-item">Razão Social: {{ object.razao_social }}</li>
+  <li class="list-group-item">Nome Fantasia: {{ object.nome_fantasia }}</li>
+  <li class="list-group-item">CNPJ/CPF: {{object.cnpj_cpf}}</li>
+</ul>
+<br>
+<a href="{% url 'lista_empresa' %}"><button class="btn btn-success">Voltar</button></a>
+{% endblock %}
+</div>
+

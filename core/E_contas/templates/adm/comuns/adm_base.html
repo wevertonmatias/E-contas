@@ -1,0 +1,43 @@
+{% extends 'admin/index.html' %}
+{% block content %}
+
+<div class="breadcrumbs">
+    {% block link-nav-inicio %}
+    <a href="http://127.0.0.1:8000/econtas/adm">Início</a>
+    {% endblock %}
+    {% block link-nav-cadastro %}
+
+    {% endblock %}
+    {% block link-nav-cadastro-selecionado %}
+
+    {% endblock %}
+
+    {% block link-nav-gerenciamento %}
+
+    {% endblock %}
+    {% block link-nav-gerenciamento-selecionado %}
+
+    {% endblock %}
+    {% block link-nav-gerenciamento-selecionado-tipo %}
+
+    {% endblock %}
+
+</div>
+
+<div id="content-main">
+    {% block div-main %}
+        <div class="app-E_contas module">
+            {%block div-1 %}
+
+            {%endblock %}
+        </div>
+
+        <div class="app-E_contas module">
+            {%block div-2 %}
+
+            {% endblock %}
+        </div>
+    {% endblock %}
+</div>
+{% endblock %}
+{% include 'site/common/script.html' %}

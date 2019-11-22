@@ -1,0 +1,9 @@
+{% extends 'adm/comuns/adm_base.html' %}
+
+{% block link-nav-gerenciamento %}
+   > <a href="{% url 'gerenciamento' %}">Gerenciamento</a>
+{% endblock %}
+
+{% block div-1 %}
+    {% include 'adm/comuns/mod_gerenciamento.html' %}
+{% endblock%}

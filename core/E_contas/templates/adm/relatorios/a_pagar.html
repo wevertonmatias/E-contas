@@ -1,0 +1,59 @@
+{% extends 'easy_pdf/base.html' %}
+
+{% block extra_style %}
+<style type="text/css">
+  .tabela {
+		border:1px solid #C0C0C0;
+		border-collapse:collapse;
+		padding:5px;
+        text-align: center;
+	}
+	.tabela caption{
+		font-size:15px;
+	}
+	.tabela th {
+		border:1px solid #C0C0C0;
+		padding:5px;
+		background:#F0F0F0;
+	}
+	.tabela td{
+		border:1px solid #C0C0C0;
+		text-align:left;
+		padding:5px;
+	}
+
+ tr:nth-child(even){
+  background-color: #f2f2f2;
+  }
+
+</style>
+
+{% endblock %}
+
+{% block content %}
+
+<table class="tabela">
+	<caption>Relatório contas a pagar</caption>
+	<thead>
+	<tr>
+		<th>id</th>
+		<th>N Documento</th>
+        <th>Descrição</th>
+		<th>Empresa</th>
+		<th>Fornecedor</th>
+	</tr>
+	</thead>
+	<tbody>
+
+        {% for pagamento in object_list %}
+        <tr>
+            <td>{{pagamento.pk}}</td>
+            <td>{{pagamento.numero_documento}}</td>
+            <td>{{pagamento.descricao}}</td>
+            <td>{{pagamento.empresa}}</td>
+            <td>{{pagamento.fornecedor}}</td>
+        </tr>
+        {% endfor %}
+	</tbody>
+</table>
+{% endblock %}

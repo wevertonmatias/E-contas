@@ -1,0 +1,58 @@
+{% extends 'adm/gerenciamento/lista/lista_base.html'%}
+
+{% block link-nav-gerenciamento-selecionado-tipo %}
+> Empresas
+{% endblock %}
+{% block div-main %}
+<div class="table-responsive-sm">
+<table class="table">
+    <thead class="thead-light">
+    <tr>
+        <th>ID</th>
+        <th scope="col">Razão Social</th>
+        <th scope="col">Nome Fantasia</th>
+        <th scope="col">Atualizar</th>
+        <th scope="col">Detalhes</th>
+    </tr>
+    </thead>
+    <tbody>
+    {% for empresa in object_list%}
+        <tr>
+            <th scope="row">{{ empresa.id}}</th>
+            <td>{{ empresa.razao_social }}</td>
+            <td>{{ empresa.nome_fantasia }}</td>
+            <td><a href="{% url 'atualiza_empresa' empresa.pk%}">Acessar</a></td>
+            <td><a href="{% url 'detalhe_empresa' empresa.pk%}">Acessar</a></td>
+        </tr>
+    </a>
+    {% endfor %}
+    </tbody>
+</table>
+</div>
+    {% endblock %}
+
+
+{% if is_paginated %}
+<div class="pagination container"
+     style="border-top: 1px solid gray; padding-top:25px;margin-top: 25px; margin-bottom: 25px;">
+    <span class="page-links">
+        <div class="col-md-5">
+        {% if page_obj.has_previous %}
+        <a href="?page={{ page_obj.previous_page_number }}" class="btn btn-default btn-flat">Anterior</a>
+        {% endif %}
+        </div>
+    <div class="col-md-5">
+    <span class="page-current">
+        Página {{ page_obj.number }} de {{ page_obj.paginator.num_pages }}.
+    </span>
+    </div>
+    {% if page_obj.has_next %}
+        <div class="col-md-2">
+        <a href="?page={{ page_obj.next_page_number }}" class="btn btn-default btn-flat ">Próximo</a>
+    </div>
+    {% endif %}
+    </span>
+</div>
+{% endif %}
+
+

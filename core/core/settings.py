@@ -26,9 +26,9 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'E_contas',
     'baton.autodiscover',
-    # 'easy_pdf',
     'bootstrap',
-
+    'easy_pdf',
+    'bootstrapform',
 ]
 
 MIDDLEWARE = [
@@ -124,13 +124,13 @@ BATON = {
     'SITE_TITLE': 'E-Contas',
     'INDEX_TITLE': 'E-Contas Administração',
     'SUPPORT_HREF': 'http://127.0.0.1:8000/econtas/contato',
-    'COPYRIGHT': 'copyright © 2019 <a href="http://127.0.0.1:8000/econtas/contato">E-Contas S.A </a>', # noqa
+    'COPYRIGHT': 'copyright © 2019 <a href="http://127.0.0.1:8000/econtas/contato">E-Contas S.A </a>',  # noqa
     'POWERED_BY': '<a href="https://github.com/wevertonmatias">Weverton Matias</a>',
     'CONFIRM_UNSAVED_CHANGES': True,
     'SHOW_MULTIPART_UPLOADING': True,
     'ENABLE_IMAGES_PREVIEW': True,
     'MENU': (
-        { 'type': 'title', 'label': 'main', 'apps': ('auth', ) },
+        {'type': 'title', 'label': 'main', 'apps': ('auth',)},
         {
             'type': 'app',
             'name': 'auth',
@@ -147,22 +147,33 @@ BATON = {
                 },
             )
         },
-        { 'type': 'title', 'label': 'Contents', 'apps': ('flatpages', ) },
-        { 'type': 'model', 'label': 'Pages', 'name': 'flatpage', 'app': 'flatpages' },
-        { 'type': 'free', 'label': 'Relatórios', 'url': 'http://www.google.it'},
-        { 'type': 'free', 'label': 'Gráfico', 'url': 'http://127.0.0.1:8000/econtas/grafico/'},
-        { 'type': 'free', 'label': 'Gerenciamento', 'children': [
-            { 'type': 'model', 'label': 'A Model', 'name': 'mymodelname', 'app': 'myapp', 'icon': 'fa fa-gavel' },
-            {'type': 'free', 'label': 'Vendas', 'url': 'http://127.0.0.1:8000/admin/E_contas/venda/'},
-            {'type': 'free', 'label': 'Pagamentos', 'url': 'http://127.0.0.1:8000/admin/E_contas/pagamento/'},
-            { 'type': 'free', 'label': 'Empresas', 'url': 'http://127.0.0.1:8000/admin/E_contas/empresa/' },
-            { 'type': 'free', 'label': 'Empresas', 'url': 'http://127.0.0.1:8000/admin/E_contas/empresa/' },
-            { 'type': 'free', 'label': 'Fornecedores', 'url': 'http://127.0.0.1:8000/admin/E_contas/fornecedor/' },
-            { 'type': 'free', 'label': 'Cidades', 'url': 'http://127.0.0.1:8000/admin/E_contas/cidade/' },
-            { 'type': 'free', 'label': 'Estados', 'url': 'http://127.0.0.1:8000/admin/E_contas/estado/' },
-            { 'type': 'free', 'label': 'Local de Pagamento', 'url': 'http://127.0.0.1:8000/admin/E_contas/localpagamento/' },
-            { 'type': 'free', 'label': 'Status do Pagamento', 'url': 'http://127.0.0.1:8000/admin/E_contas/statusdopagamento/' },
-        ] },
+        {'type': 'title', 'label': 'Contents', 'apps': ('flatpages',)},
+        {'type': 'model', 'label': 'Pages', 'name': 'flatpage', 'app': 'flatpages'},
+        {'type': 'free', 'icon': 'fas fa-print', 'label': 'Relatórios', 'url': 'http://127.0.0.1:8000/econtas/adm/relatorio/'},
+        {'type': 'free', 'icon': 'fas fa-chart-pie', 'label': 'Gráfico', 'url': 'http://127.0.0.1:8000/econtas/adm/grafico/'},
+        {'type': 'free', 'icon': 'fas fa-plus-circle', 'label': 'Cadastrar', 'children': [
+            {'type': 'model', 'label': 'A Model', 'name': 'mymodelname', 'app': 'myapp', 'icon': 'fa fa-gavel'},
+            {'type': 'free', 'label': 'Vendas', 'url': ''},
+            {'type': 'free', 'label': 'Pagamentos', 'url': ''},
+            {'type': 'free', 'label': 'Empresas', 'url': ''},
+            {'type': 'free', 'label': 'Fornecedores', 'url': ''},
+            {'type': 'free', 'label': 'Cidades', 'url': ''},
+            {'type': 'free', 'label': 'Estados', 'url': ''},
+            {'type': 'free', 'label': 'Local de Pagamento', 'url': ''},
+            {'type': 'free', 'label': 'Status do Pagamento', 'url': ''},
+        ]},
+        {'type': 'free', 'icon': 'fas fa-edit', 'label': 'Listar/Atualizar/Deletar', 'children': [
+            {'type': 'model', 'label': 'A Model', 'name': 'mymodelname', 'app': 'myapp', 'icon': 'fa fa-gavel'},
+            {'type': 'free', 'label': 'Vendas', 'url': ''},
+            {'type': 'free', 'label': 'Pagamentos', 'url': ''},
+            {'type': 'free', 'label': 'Empresas', 'url': 'http://127.0.0.1:8000/econtas/adm/lista/empresa/'},
+            {'type': 'free', 'label': 'Fornecedores', 'url': ''},
+            {'type': 'free', 'label': 'Cidades', 'url': ''},
+            {'type': 'free', 'label': 'Estados', 'url': ''},
+            {'type': 'free', 'label': 'Local de Pagamento', 'url': ''},
+            {'type': 'free', 'label': 'Status do Pagamento', 'url': ''},
+        ]},
+
     ),
     'ANALYTICS': {
         'CREDENTIALS': os.path.join(BASE_DIR, 'credentials.json'),
