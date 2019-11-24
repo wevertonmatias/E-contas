@@ -155,7 +155,7 @@ BATON = {
             {'type': 'model', 'label': 'A Model', 'name': 'mymodelname', 'app': 'myapp', 'icon': 'fa fa-gavel'},
             {'type': 'free', 'label': 'Vendas', 'url': ''},
             {'type': 'free', 'label': 'Pagamentos', 'url': ''},
-            {'type': 'free', 'label': 'Empresas', 'url': ''},
+            {'type': 'free', 'label': 'Empresas', 'url': 'http://127.0.0.1:8000/econtas/adm/cadastro/empresa/'},
             {'type': 'free', 'label': 'Fornecedores', 'url': ''},
             {'type': 'free', 'label': 'Cidades', 'url': ''},
             {'type': 'free', 'label': 'Estados', 'url': ''},

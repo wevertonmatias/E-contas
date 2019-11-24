@@ -19,6 +19,10 @@ class Adm(TemplateView):
 class Cadastro(TemplateView):
     template_name = 'adm/cadastro/cadastro_base.html'
 
+class CadastroVenda(CreateView):
+    template_name = 'adm/cadastro/venda.html'
+    model = Venda
+    fields = '__all__'
 
 class CadastroFornecedor(CreateView):
     template_name = 'adm/cadastro/fornecedor.html'
@@ -65,6 +69,12 @@ class Gerenciamento(TemplateView):
 class Lista(TemplateView):
     template_name = 'adm/lista/lista_base.html'
 
+
+class ListaVenda(ListView):
+    template_name = 'adm/gerenciamento/lista/venda.html'
+    model = Venda
+    fields = '__all__'
+    paginate_by = 10
 
 class ListarFornecedor(ListView):
     template_name = 'adm/lista/fornecedor.html'

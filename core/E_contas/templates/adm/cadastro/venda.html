@@ -1,0 +1,15 @@
+{% extends 'adm/cadastro/cadastro_base.html' %}
+{% block link-nav-cadastro-selecionado %}
+   > Venda
+{% endblock %}
+{% load bootstrap %}
+
+{% block div-1 %}
+    <form method="post">
+        {% csrf_token %}
+        {{ form|bootstrap }}
+    <input class="btn btn-success btn-md btn-block" type="submit" value="Cadastrar">
+    </form>
+    <br>
+<a class="btn btn-primary btn-md btn-block" href="">Voltar</a>
+{% endblock %}

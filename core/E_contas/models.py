@@ -36,6 +36,7 @@ class Venda(models.Model):
     parcelas = models.IntegerField(null=False, blank=False)
     data = models.DateField(max_length=255, null=False, blank=False)
     local_de_pagamento = models.ForeignKey(LocalPagamento, on_delete="SET_NULL", null=False, blank=False)
+    empresa = models.ForeignKey(Empresa, on_delete="SET_NULL", null=False, blank=False)
 
     def __str__(self):
         return "R${} - Data:{} - Local de Pagamento:{}".format(self.valor, self.data, self.local_de_pagamento)

@@ -1,0 +1,70 @@
+{% extends 'adm/gerenciamento/lista/lista_base.html'%}
+
+{% block link-nav-gerenciamento-selecionado-tipo %}
+> Venda
+{% endblock %}
+
+{% block div-main %}
+<div class="table-responsive-sm">
+<table class="table">
+    <thead class="thead-light">
+    <tr>
+        <th>ID</th>
+        <th scope="col"> Valor</th>
+        <th scope="col"> Empresa</th>
+        <th scope="col"> Data</th>
+        <th scope="col"> Editar</th>
+        <th scope="col"> Detalhes</th>
+        <th scope="col"> Deletar</th>
+    </tr>
+    </thead>
+    <tbody>
+    {% for venda in object_list%}
+        <tr>
+            <th scope="row">{{ venda.id}}</th>
+            <td>{{ venda.valor }}</td>
+            <td>{{ venda.empresa }}</td>
+            <td>{{ venda.data }}</td>
+            <td>
+                <a class="text-dark" title="Editar Empresa" href="">
+                    <i class="fas fa-edit"></i>
+                </a>
+            </td>
+            <td><a class="text-dark" title="Mostrar Detalhes" href="">
+                    <i class="fas fa-list-alt"></i>
+                </a>
+            </td>
+            <td><a title="Deletar Empresa" class="fas fa-trash-alt" href=""></a></td>
+        </tr>
+    </a>
+    {% endfor %}
+    </tbody>
+</table>
+</div>
+    {% endblock %}
+
+
+{% if is_paginated %}
+<div class="pagination container"
+     style="border-top: 1px solid gray; padding-top:25px;margin-top: 25px; margin-bottom: 25px;">
+    <span class="page-links">
+        <div class="col-md-5">
+        {% if page_obj.has_previous %}
+        <a href="?page={{ page_obj.previous_page_number }}" class="btn btn-default btn-flat">Anterior</a>
+        {% endif %}
+        </div>
+    <div class="col-md-5">
+    <span class="page-current">
+        Página {{ page_obj.number }} de {{ page_obj.paginator.num_pages }}.
+    </span>
+    </div>
+    {% if page_obj.has_next %}
+        <div class="col-md-2">
+        <a href="?page={{ page_obj.next_page_number }}" class="btn btn-default btn-flat ">Próximo</a>
+    </div>
+    {% endif %}
+    </span>
+</div>
+{% endif %}
+
+
