@@ -11,8 +11,9 @@
         <th>ID</th>
         <th scope="col">Razão Social</th>
         <th scope="col">Nome Fantasia</th>
-        <th scope="col">Atualizar</th>
-        <th scope="col">Detalhes</th>
+        <th scope="col"> Editar</th>
+        <th scope="col"> Detalhes</th>
+        <th scope="col"> Deletar</th>
     </tr>
     </thead>
     <tbody>
@@ -21,8 +22,16 @@
             <th scope="row">{{ empresa.id}}</th>
             <td>{{ empresa.razao_social }}</td>
             <td>{{ empresa.nome_fantasia }}</td>
-            <td><a href="{% url 'atualiza_empresa' empresa.pk%}">Acessar</a></td>
-            <td><a href="{% url 'detalhe_empresa' empresa.pk%}">Acessar</a></td>
+            <td>
+                <a class="text-dark" title="Editar Empresa" href="{% url 'atualiza_empresa' empresa.pk%}">
+                    <i class="fas fa-edit"></i>
+                </a>
+            </td>
+            <td><a class="text-dark" title="Mostrar Detalhes" href="{% url 'detalhe_empresa' empresa.pk%}">
+                    <i class="fas fa-list-alt"></i>
+                </a>
+            </td>
+            <td><a title="Deletar Empresa" class="fas fa-trash-alt" href="{% url 'deleta_empresa' empresa.pk %}"></a></td>
         </tr>
     </a>
     {% endfor %}

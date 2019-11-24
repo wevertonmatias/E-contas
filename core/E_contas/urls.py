@@ -7,7 +7,7 @@ from django.conf.urls.static import static
 
 urlpatterns = [
     path('adm-base', AdmBase.as_view(), name='adm-base'),
-    path('adm', Adm.as_view(), name='home-adm'),
+    path('adm', Adm.as_view(), name='adm'),
     path('adm/grafico/', Grafico.as_view(), name='grafico'),
     path('adm/relatorio/', Relatorio.as_view(), name='relatorio'),
     path('adm/relatorio/a_pagar', RelAPagar.as_view(), name='relatorio_pagamento'),
@@ -25,6 +25,7 @@ urlpatterns = [
     path('adm/detalhe/empresa/<int:pk>/', DetalheEmpresa.as_view(), name='detalhe_empresa'),
     path('adm/detalhe/fornecedor/<int:pk>/', DetalheFornecedor.as_view(), name='detalhe_fornecedor'),
     path('adm/detalhe/pagamento/<int:pk>/', DetalhePagamento.as_view(), name='detalhe_pagamento'),
+    path('adm/deleta/empresa/<int:pk>/', DeletaEmpresa.as_view(), name='deleta_empresa'),
 
     path('', Index.as_view(), name="index"),
     path('quem_somos', Quem_somos.as_view(), name="quem_somos"),

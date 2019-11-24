@@ -3,22 +3,16 @@
 {% include 'site/common/link.html' %}
 {% load l10n %}
 {% block content %}
-
-
 <h1>
     Gráficos
 </h1>
-
-
 <div id="content-main">
     <div class="app-E_contas module">
         <canvas class="grafico1"></canvas>
         <script src="https://cdn.jsdelivr.net/npm/chart.js@2.8.0"></script>
         <script>
         var ctx = document.getElementsByClassName("grafico1");
-
         var ChartGraph = new Chart(ctx, {
-            type: 'bar',
             type: 'bar',
     data: {
         labels: ['Pagar', 'Receber'],
@@ -49,11 +43,6 @@
         }
     }
 });
-
-
-
-
-
 
         </script>
     </div>

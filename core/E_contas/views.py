@@ -4,7 +4,7 @@ from easy_pdf.views import PDFTemplateView, PDFTemplateResponseMixin
 
 from .form import *
 from .models import *
-from django.views.generic import TemplateView, CreateView, ListView, UpdateView, DetailView, View
+from django.views.generic import TemplateView, CreateView, ListView, UpdateView, DetailView, View, DeleteView
 from django.urls import reverse_lazy
 from django.http import HttpResponseRedirect, JsonResponse
 import json
@@ -126,6 +126,14 @@ class DetalheFornecedor(DetailView):
 class DetalhePagamento(DetailView):
     template_name = 'adm/detalhe/pagamento.html'
     model = Pagamento
+
+
+class DeletaEmpresa(DeleteView):
+    model = Empresa
+    template_name = 'adm/gerenciamento/deleta/empresa.html'
+
+    def get_success_url(self):
+        return reverse_lazy('lista_empresa')
 
 class Grafico(TemplateView):
     template_name = 'adm/graficos/grafico.html'
