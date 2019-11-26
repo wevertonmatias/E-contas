@@ -157,10 +157,7 @@ BATON = {
             {'type': 'free', 'label': 'Pagamentos', 'url': ''},
             {'type': 'free', 'label': 'Empresas', 'url': 'http://127.0.0.1:8000/econtas/adm/cadastro/empresa/'},
             {'type': 'free', 'label': 'Fornecedores', 'url': ''},
-            {'type': 'free', 'label': 'Cidades', 'url': ''},
-            {'type': 'free', 'label': 'Estados', 'url': ''},
             {'type': 'free', 'label': 'Local de Pagamento', 'url': ''},
-            {'type': 'free', 'label': 'Status do Pagamento', 'url': ''},
         ]},
         {'type': 'free', 'icon': 'fas fa-edit', 'label': 'Listar/Atualizar/Deletar', 'children': [
             {'type': 'model', 'label': 'A Model', 'name': 'mymodelname', 'app': 'myapp', 'icon': 'fa fa-gavel'},
@@ -168,10 +165,7 @@ BATON = {
             {'type': 'free', 'label': 'Pagamentos', 'url': ''},
             {'type': 'free', 'label': 'Empresas', 'url': 'http://127.0.0.1:8000/econtas/adm/lista/empresa/'},
             {'type': 'free', 'label': 'Fornecedores', 'url': ''},
-            {'type': 'free', 'label': 'Cidades', 'url': ''},
-            {'type': 'free', 'label': 'Estados', 'url': ''},
             {'type': 'free', 'label': 'Local de Pagamento', 'url': ''},
-            {'type': 'free', 'label': 'Status do Pagamento', 'url': ''},
         ]},
 
     ),

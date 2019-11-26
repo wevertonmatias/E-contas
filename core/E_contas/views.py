@@ -24,6 +24,9 @@ class CadastroVenda(CreateView):
     model = Venda
     fields = '__all__'
 
+    def get_success_url(self):
+        return reverse_lazy('lista_venda')
+
 class CadastroFornecedor(CreateView):
     template_name = 'adm/cadastro/fornecedor.html'
     model = Fornecedor
@@ -50,14 +53,14 @@ class CadastroEmpresa(CreateView):
 
 
 class CadastroPagamento(CreateView):
-    template_name = 'adm/cadastro/empresa.html'
+    template_name = 'adm/cadastro/pagamento.html'
     model = Pagamento
     fields = '__all__'
 
     # form_class = EmpresaForm
 
     def get_success_url(self):
-        return reverse_lazy('listar_pagamento')
+        return reverse_lazy('lista_pagamento')
 
     # def from_valid(self, form):
     #     formulario = form
@@ -89,12 +92,19 @@ class ListaEmpresa(ListView):
     paginate_by = 10
 
 
-class ListarPagamento(ListView):
-    template_name = 'adm/lista/pagamento.html'
+class ListaPagamento(ListView):
+    template_name = 'adm/gerenciamento/lista/pagamento.html'
     model = Pagamento
     fields = '__all__'
-    paginate_by = 10
 
+
+class AtualizaVenda(UpdateView):
+    template_name = 'adm/gerenciamento/atualiza/venda.html'
+    model = Venda
+    fields = '__all__'
+
+    def get_success_url(self):
+        return reverse_lazy('lista_venda')
 
 class AtualizarFornecedor(UpdateView):
     template_name = 'adm/atualiza/fornecedor.html'
@@ -123,6 +133,10 @@ class AtualizarPagamento(UpdateView):
         return reverse_lazy('listar_pagamento')
 
 
+class DetalheVenda(DetailView):
+    template_name = 'adm/gerenciamento/detalhe/venda.html'
+    model = Venda
+
 class DetalheEmpresa(DetailView):
     template_name = 'adm/gerenciamento/detalhe/empresa.html'
     model = Empresa
@@ -137,6 +151,13 @@ class DetalhePagamento(DetailView):
     template_name = 'adm/detalhe/pagamento.html'
     model = Pagamento
 
+
+class DeletaVenda(DeleteView):
+    model = Venda
+    template_name = 'adm/gerenciamento/deleta/venda.html'
+
+    def get_success_url(self):
+        return reverse_lazy('lista_venda')
 
 class DeletaEmpresa(DeleteView):
     model = Empresa

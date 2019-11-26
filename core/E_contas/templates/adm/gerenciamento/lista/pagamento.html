@@ -1,33 +1,62 @@
-{% extends 'admin/base.html' %}
-{% load bootstrap %}
-{% block content %}
-    <a href="{% url 'sistema' %}"><h1>Painel Gerenciador</h1></a>
-    <h1>Lista de Pagamentos</h1>
-    <h1><a href="{% url 'cadastrar_pagamento' %}">Cadastrar Pagamentos +</a></h1>
+{% extends 'adm/gerenciamento/lista/lista_base.html'%}
 
-    {% for pagamento in object_list %}
-        <div style="border:1px solid;padding-left:5px; margin-bottom:5px-left:5px; margin-bottom:5px">
-            <h2>Numero Documento</h2>
-                <h3>{{pagamento.numero_documento}}</h3>
-            <h2>Descrição</h2>
-                <h3>{{pagamento.descricao}}</h3>
-            <h2>Empresa</h2>
-                <h3>{{pagamento.empresa}}</h3>
-            <h2>Data de Vencimento</h2>
-                <h3>{{pagamento.data_de_vencimento}}</h3>
-            <h2>Valor do Pagamento</h2>
-                <h3>{{pagamento.valor}}</h3>
-            <h2>Fornecedor</h2>
-                <h3>{{pagamento.fornecedor}}</h3>
-            <a href="{% url 'atualizar_pagamento' pagamento.pk %}">Atualizar Pagamento</a>
-            <br>
-            <a href="{% url 'detalhe_pagamento' pagamento.pk %}">Detalhes do Pagamento</a>
-        </div>
+{% block link-nav-gerenciamento-selecionado-tipo %}
+> Pagamento
+{% endblock %}
+{% block div-main %}
 
-    {%endfor %}
+<div class="container-fluid">
+    <a class="btn btn-success text-white m-1" href="{% url 'cadastro_pagamento' %}">
+        <h7>Cadastrar Pagamento <i class="fas fa-plus-circle"></i></h7>
+    </a>
+    <div class="table-responsive">
+        <table class="table">
+            <thead class="thead-light">
+            <tr>
+                <th>ID</th>
+                <th scope="col"> Descrição</th>
+                <th scope="col"> Data Vencimento</th>
+                <th scope="col"> Fornecedor</th>
+                <th scope="col"> Status</th>
+                <th scope="col"> Valor</th>
+                <th scope="col"> Editar</th>
+                <th scope="col"> Detalhes</th>
+                <th scope="col"> Deletar</th>
+            </tr>
+            </thead>
+            <tbody>
+            {% for pagamento in object_list %}
+            <tr>
+                <th scope="row">{{ pagamento.id}}</th>
+                <td>{{ pagamento.descricao }}</td>
+                <td>{{ pagamento.data_de_vencimento }}</td>
+                <td>{{ pagamento.fornecedor }}</td>
+                <td>{{ pagamento.status_pagamento }}</td>
+                <td>{{ pagamento.valor }}</td>
+                <td>
+                    <a class="text-dark" title="Editar Empresa" href="">
+                        <i class="fas fa-edit"></i>
+                    </a>
+                </td>
+                <td><a class="text-dark" title="Mostrar Detalhes" href="">
+                    <i class="fas fa-list-alt"></i>
+                </a>
+                </td>
+                <td><a title="Deletar Empresa" class="fas fa-trash-alt" href=""></a></td>
+            </tr>
+            </a>
+            {% endfor %}
+            </tbody>
+        </table>
+    </div>
+</div>
+
+{% endblock %}
+
 
 {% if is_paginated %}
-    <div class="pagination container" style="border-top: 1px solid gray; padding-top:25px;margin-top: 25px; margin-bottom: 25px;">
+<div class="pagination container"
+     style="border-top: 1px solid gray; padding-top:25px;margin-top: 25px; margin-bottom: 25px;">
     <span class="page-links">
         <div class="col-md-5">
         {% if page_obj.has_previous %}
@@ -48,4 +77,4 @@
 </div>
 {% endif %}
 
-{% endblock %}
+

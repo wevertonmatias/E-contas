@@ -1,7 +1,7 @@
 {%extends 'adm/gerenciamento/atualiza/atualiza_base.html'%}
 {% load bootstrap %}
 {% block link-nav-gerenciamento-selecionado-tipo %}
-   > Empresa
+   > Venda
 {% endblock %}
 
 {% block div-1 %}
@@ -10,5 +10,7 @@
 {{ form | bootstrap }}
 <input class="btn btn-success btn-md btn-block" type="submit" value="Editar">
 </form>
-<a class="btn btn-primary btn-md btn-block mt-1" href="{% url 'lista_empresa' %}">Voltar</a>
+<br>
+<a href="{% url 'lista_venda' %}"> <input class="btn btn-primary btn-md btn-block" type="submit" value="Voltar"></a>
+
 {% endblock %}

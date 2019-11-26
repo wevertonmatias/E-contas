@@ -1,0 +1,19 @@
+{% extends 'adm/gerenciamento/detalhe/detalhe_base.html' %}
+{% load bootstrap %}
+{% block link-nav-gerenciamento-selecionado-tipo %}
+> Venda
+{% endblock %}
+{% block div-1 %}
+<ul class="list-group">
+  <li class="list-group-item">Código. {{object.pk}}</li>
+  <li class="list-group-item">Valor: {{ object.valor }}</li>
+  <li class="list-group-item">Parcelas: {{ object.parcelas }}</li>
+  <li class="list-group-item">Data: {{object.data}}</li>
+  <li class="list-group-item">Local de Pagamento: {{object.local_de_pagamento}}</li>
+  <li class="list-group-item">Empresa: {{object.empresa}}</li>
+</ul>
+<br>
+<a href="{% url 'lista_venda' %}"><button class="btn btn-success">Voltar</button></a>
+{% endblock %}
+</div>
+

@@ -1,47 +1,54 @@
 {% extends 'adm/gerenciamento/lista/lista_base.html'%}
 
 {% block link-nav-gerenciamento-selecionado-tipo %}
-> Venda
+> Vendas
 {% endblock %}
-
 {% block div-main %}
-<div class="table-responsive-sm">
-<table class="table">
-    <thead class="thead-light">
-    <tr>
-        <th>ID</th>
-        <th scope="col"> Valor</th>
-        <th scope="col"> Empresa</th>
-        <th scope="col"> Data</th>
-        <th scope="col"> Editar</th>
-        <th scope="col"> Detalhes</th>
-        <th scope="col"> Deletar</th>
-    </tr>
-    </thead>
-    <tbody>
-    {% for venda in object_list%}
-        <tr>
-            <th scope="row">{{ venda.id}}</th>
-            <td>{{ venda.valor }}</td>
-            <td>{{ venda.empresa }}</td>
-            <td>{{ venda.data }}</td>
-            <td>
-                <a class="text-dark" title="Editar Empresa" href="">
-                    <i class="fas fa-edit"></i>
-                </a>
-            </td>
-            <td><a class="text-dark" title="Mostrar Detalhes" href="">
+
+<div class="container-fluid">
+    <a class="btn btn-success text-white m-1" href="{% url 'cadastro_venda' %}">
+        <h7>Cadastrar Venda <i class="fas fa-plus-circle"></i></h7>
+    </a>
+    <div class="table-responsive">
+        <table class="table">
+            <thead class="thead-light">
+            <tr>
+                <th>ID</th>
+                <th scope="col"> Valor</th>
+                <th scope="col"> Empresa</th>
+                <th scope="col"> Data</th>
+                <th scope="col"> Editar</th>
+                <th scope="col"> Detalhes</th>
+                <th scope="col"> Deletar</th>
+            </tr>
+            </thead>
+            <tbody>
+            {% for venda in object_list%}
+            <tr>
+                <th scope="row">{{ venda.id}}</th>
+                <td>{{ venda.valor }}</td>
+                <td>{{ venda.empresa }}</td>
+                <td>{{ venda.data }}</td>
+                <td>
+                    <a class="text-dark" title="Editar Empresa" href="{% url 'atualiza_venda' venda.pk %}">
+                        <i class="fas fa-edit"></i>
+                    </a>
+                </td>
+                <td><a class="text-dark" title="Mostrar Detalhes" href="{% url 'detalhe_venda' venda.pk %}">
                     <i class="fas fa-list-alt"></i>
                 </a>
-            </td>
-            <td><a title="Deletar Empresa" class="fas fa-trash-alt" href=""></a></td>
-        </tr>
-    </a>
-    {% endfor %}
-    </tbody>
-</table>
+                </td>
+                <td><a title="Deletar Empresa" class="fas fa-trash-alt" href="{% url 'deleta_venda' venda.pk %}"></a>
+                </td>
+            </tr>
+            </a>
+            {% endfor %}
+            </tbody>
+        </table>
+    </div>
 </div>
-    {% endblock %}
+
+{% endblock %}
 
 
 {% if is_paginated %}
