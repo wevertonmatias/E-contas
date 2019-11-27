@@ -4,6 +4,13 @@
 > Venda
 {% endblock %}
 {% block div-1 %}
+<div class="row">
+    <div class="container mb-1">
+        <a class="btn btn-success btn-md" href="{% url 'lista_venda' %}">Voltar</a>
+        <a class="btn btn-secondary btn-md" href="{% url 'atualiza_venda' venda.pk %}">Editar</a>
+        <a class="btn btn-primary btn-md" href="{% url 'deleta_venda' venda.pk %}">Deletar</a>
+    </div>
+</div>
 <ul class="list-group">
   <li class="list-group-item">Código. {{object.pk}}</li>
   <li class="list-group-item">Valor: {{ object.valor }}</li>
@@ -12,8 +19,7 @@
   <li class="list-group-item">Local de Pagamento: {{object.local_de_pagamento}}</li>
   <li class="list-group-item">Empresa: {{object.empresa}}</li>
 </ul>
-<br>
-<a href="{% url 'lista_venda' %}"><button class="btn btn-success">Voltar</button></a>
+
 {% endblock %}
 </div>
 

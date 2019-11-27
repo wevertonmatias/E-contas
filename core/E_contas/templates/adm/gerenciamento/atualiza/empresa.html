@@ -8,7 +8,7 @@
 <form method="post">
 {% csrf_token %}
 {{ form | bootstrap }}
-<input class="btn btn-success btn-md btn-block" type="submit" value="Editar">
+<input class="btn btn-primary btn-md btn-block" type="submit" value="Editar">
 </form>
-<a class="btn btn-primary btn-md btn-block mt-1" href="{% url 'lista_empresa' %}">Voltar</a>
+<a class="btn btn-success btn-md btn-block mt-1" href="{% url 'lista_empresa' %}">Voltar</a>
 {% endblock %}

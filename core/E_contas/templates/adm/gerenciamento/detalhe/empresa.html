@@ -4,14 +4,20 @@
 > Empresa
 {% endblock %}
 {% block div-1 %}
+<div class="row">
+    <div class="container mb-1">
+        <a class="btn btn-success btn-md" href="{% url 'lista_empresa' %}">Voltar</a>
+        <a class="btn btn-secondary btn-md" href="{% url 'atualiza_empresa' empresa.pk %}">Editar</a>
+        <a class="btn btn-primary btn-md" href="{% url 'deleta_empresa' empresa.pk %}">Deletar</a>
+    </div>
+</div>
 <ul class="list-group">
-  <li class="list-group-item">Código. {{object.pk}}</li>
-  <li class="list-group-item">Razão Social: {{ object.razao_social }}</li>
-  <li class="list-group-item">Nome Fantasia: {{ object.nome_fantasia }}</li>
-  <li class="list-group-item">CNPJ/CPF: {{object.cnpj_cpf}}</li>
+    <li class="list-group-item">Código. {{object.pk}}</li>
+    <li class="list-group-item">Razão Social: {{ object.razao_social }}</li>
+    <li class="list-group-item">Nome Fantasia: {{ object.nome_fantasia }}</li>
+    <li class="list-group-item">CNPJ/CPF: {{object.cnpj_cpf}}</li>
 </ul>
-<br>
-<a href="{% url 'lista_empresa' %}"><button class="btn btn-success">Voltar</button></a>
+
 {% endblock %}
 </div>
 

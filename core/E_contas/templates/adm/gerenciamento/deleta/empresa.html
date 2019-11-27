@@ -14,11 +14,10 @@
   <li class="list-group-item">Nome Fantasia: {{ object.nome_fantasia }}</li>
   <li class="list-group-item">CNPJ/CPF: {{object.cnpj_cpf}}</li>
 </ul>
-  <br>
-  <input class="btn btn-primary btn-md btn-block" type="submit" value="Deletar">
+  <input class="btn btn-primary btn-md btn-block mt-1" type="submit" value="Deletar">
+  <a class="btn btn-success btn-md btn-block" href="{% url 'lista_empresa' %}">Voltar</a>
 </form>
-<br>
-<a class="btn btn-success btn-md btn-block" href="{% url 'lista_empresa' %}">Voltar</a>
+
 {% endblock %}
 </div>
 

@@ -1,0 +1,44 @@
+{% extends 'adm/gerenciamento/deleta/deleta_base.html' %}
+{% load bootstrap %}
+{% block link-4 %}
+> Pagamento
+{% endblock %}
+{% block div-main %}
+<div class="container">
+    <form method="post">
+        {% csrf_token %}
+        {{ form }}
+        <div class="row">
+            <div class="col-sm">
+                <ul class="list-group">
+                    <li class="list-group-item">Código: {{object.pk}}</li>
+                    <li class="list-group-item">Descrição. {{object.descricao}}</li>
+                    <li class="list-group-item">Nº Documento: {{object.numero_documento}}</li>
+                    <li class="list-group-item">Data de Vencimento: {{ object.data_de_vencimento }}</li>
+                    <li class="list-group-item">Valor: {{ object.valor }}</li>
+                    <li class="list-group-item">Status do Pagamento: {{ object.status_pagamento }}</li>
+                    <li class="list-group-item">Tipo de pagamento: {{ object.tipo_de_pagamento }}</li>
+                    <li class="list-group-item">Empresa: {{ object.empresa }}</li>
+                </ul>
+            </div>
+            <div class="col-sm">
+                <ul class="list-group">
+                    <li class="list-group-item">Fornecedor: {{object.fornecedor}}</li>
+                    <li class="list-group-item">Parcelas: {{object.parcela}}</li>
+                    <li class="list-group-item">Competência: {{object.competencia}}</li>
+                    <li class="list-group-item">Valor de Juros: {{object.valor_juros}}</li>
+                    <li class="list-group-item">Data do Pagamento: {{object.data_de_pagamento}}</li>
+                </ul>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-sm mt-1">
+            <a class="btn btn-success btn-md" href="{% url 'lista_pagamento' %}">Voltar</a>
+            <input class="btn btn-primary btn-md" type="submit" value="Deletar">
+            </div>
+        </div>
+    </form>
+</div>
+{% endblock %}
+
+

@@ -179,6 +179,13 @@ class DeletaEmpresa(DeleteView):
     def get_success_url(self):
         return reverse_lazy('lista_empresa')
 
+class DeletaPagamento(DeleteView):
+    model = Pagamento
+    template_name = 'adm/gerenciamento/deleta/pagamento.html'
+
+    def get_success_url(self):
+        return reverse_lazy('lista_pagamento')
+
 
 class Grafico(TemplateView):
     template_name = 'adm/grafico/grafico_base.html'
