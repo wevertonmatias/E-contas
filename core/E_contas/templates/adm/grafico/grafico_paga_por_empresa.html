@@ -1,0 +1,52 @@
+{% extends 'adm/grafico/grafico_base.html' %}
+{% load static %}
+{% load l10n %}
+
+{% block link-3 %}
+> Contas a Pagar Por Empresa
+{% endblock %}
+
+{% block div-main %}
+{% include 'adm/grafico/grafico_link.html' %}
+<canvas class="grafico_paga_por_empresa"></canvas>
+<script>
+
+        var total = 3.5 * 7;
+        var ctx = document.getElementsByClassName("grafico_paga_por_empresa");
+        var ChartGraph = new Chart(ctx, {
+            type: 'bar',
+    data: {
+        labels: [
+        {% for empresa in empresas %}
+            '{{ empresa.razao_social }}',
+        {%endfor%}
+                ,],
+        datasets: [{
+            label: 'TOTAL de Contas a Pagar por Empresa',
+            data: [
+                {% for valor in valores %}
+                    {{ valor.valor__sum.normalize|unlocalize}},
+                {% endfor %}
+            ],
+            backgroundColor: [
+
+            ],
+             borderColor: [
+
+
+            ],
+            borderWidth: 1
+        }]
+    },
+    options: {
+        scales: {
+            yAxes: [{
+                ticks: {
+                    beginAtZero: true
+                }
+            }]
+        }
+    }
+});
+</script>
+{%endblock%}

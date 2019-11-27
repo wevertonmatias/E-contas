@@ -1,0 +1,10 @@
+{% extends 'adm/comuns/adm_base.html' %}
+{% load static %}
+
+{% block link-2 %}
+> <a href="{% url 'grafico' %}">Gráficos</a>
+{% endblock %}
+
+{%block div-1 %}
+    {% include 'adm/comuns/mod_grafico.html' %}
+{% endblock %}

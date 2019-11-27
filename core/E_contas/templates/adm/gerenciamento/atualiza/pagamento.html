@@ -1,13 +1,62 @@
-{% extends 'admin/base.html' %}
+{% extends 'adm/gerenciamento/atualiza/atualiza_base.html' %}
 {% load bootstrap %}
+{% block link-4 %}
+   > Pagamento
+{% endblock %}
 
-{% block content %}
+{% block div-main %}
+<div class="container">
     <form method="post">
         {% csrf_token %}
-        {{ form | bootstrap }}
-        <br>
-        <input type="submit" value="Atualizar">
+        <div class="row">
+            <div class="col-sm">
+                {{ form.descricao|bootstrap }}
+            </div>
+            <div class="col-sm">
+                {{ form.numero_documento|bootstrap}}
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-sm">
+                {{ form.data_de_vencimento|bootstrap}}
+                <small class="text-danger form-text text-sm">Ex. DD/MM/AAAA.</small>
+            </div>
+            <div class="col-sm">
+                {{ form.valor|bootstrap}}
+            </div>
+            <div class="col-sm">
+                {{ form.tipo_de_pagamento|bootstrap}}
+            </div>
+            <div class="col-sm">
+                {{ form.status_pagamento|bootstrap}}
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-sm">
+                {{ form.empresa|bootstrap }}
+            </div>
+            <div class="col-sm">
+                {{ form.fornecedor|bootstrap }}
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-sm">
+                {{ form.data_de_pagamento|bootstrap }}
+            </div>
+            <div class="col-sm">
+                {{ form.parcela|bootstrap }}
+            </div>
+            <div class="col-sm">
+                {{ form.competencia|bootstrap }}
+            </div>
+            <div class="col-sm">
+                {{ form.valor_juros|bootstrap }}
+            </div>
+        </div>
+        <a class="btn btn-primary btn-md" href="{% url 'lista_pagamento' %}">Voltar</a>
+        <input class="btn btn-success btn-md " type="submit" value="Editar">
     </form>
-        <br>
-        <a href="{% url 'listar_pagamento' %}"><input type="submit" value="Voltar"></a>
+</div>
+
+
 {% endblock %}

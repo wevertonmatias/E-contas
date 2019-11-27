@@ -1,6 +1,6 @@
 {% extends 'adm/gerenciamento/lista/lista_base.html'%}
 
-{% block link-nav-gerenciamento-selecionado-tipo %}
+{% block link-4 %}
 > Pagamento
 {% endblock %}
 {% block div-main %}
@@ -34,11 +34,11 @@
                 <td>{{ pagamento.status_pagamento }}</td>
                 <td>{{ pagamento.valor }}</td>
                 <td>
-                    <a class="text-dark" title="Editar Empresa" href="">
+                    <a class="text-dark" title="Editar Empresa" href="{% url 'atualiza_pagamento' pagamento.pk %}">
                         <i class="fas fa-edit"></i>
                     </a>
                 </td>
-                <td><a class="text-dark" title="Mostrar Detalhes" href="">
+                <td><a class="text-dark" title="Mostrar Detalhes" href="{% url 'detalhe_pagamento' pagamento.pk %}">
                     <i class="fas fa-list-alt"></i>
                 </a>
                 </td>

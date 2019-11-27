@@ -1,34 +1,32 @@
-{% extends 'admin/base.html' %}
+{% extends 'adm/gerenciamento/detalhe/detalhe_base.html' %}
 {% load bootstrap %}
-{% block content %}
 
-<h1>Detalhes do Pagamento</h1>
+{% block link-4 %}
+> Pagamento
+{% endblock %}
 
-<h2>Numero Documento</h2>
-    <h3>{{object.numero_documento}}</h3>
-<h2>Descrição</h2>
-    <h3>{{object.descricao}}</h3>
-<h2>Empresa</h2>
-    <h3>{{object.empresa}}</h3>
-<h2>Tipo de Pagamento</h2>
-    <h3>{{object.tipo_de_pagamento}}</h3>
-<h2>Data de Vencimento</h2>
-    <h3>{{object.data_de_vencimento}}</h3>
-<h2>Valor do Pagamento</h2>
-    <h3>{{object.valor}}</h3>
-<h2>Status do Pagamento</h2>
-    <h3>{{object.status_pagamento}}</h3>
-<h2>Fornecedor</h2>
-    <h3>{{object.fornecedor}}</h3>
-<h2>Parcela do Pagamento</h2>
-    <h3>{{object.parcela}}</h3>
-<h2>Competência do Pagamento</h2>
-    <h3>{{object.competencia}}</h3>
-<h2>Juros do Pagamento</h2>
-    <h3>{{object.valor_juros}}</h3>
-<h2>Data de Pagamento</h2>
-    <h3>{{object.data_de_pagamento}}</h3>
+{% block div-main %}
 
-<br>
-<a href="{% url 'listar_pagamento' %}"><input type="submit" value="Voltar"></a>
+<div class="container">
+    <div class="row">
+        <div class="col-sm">
+            <ul class="list-group">
+                <li class="list-group-item">Código: {{object.pk}}</li>
+                <li class="list-group-item">Descrição. {{object.descricao}}</li>
+                <li class="list-group-item">Nº Documento: {{object.numero_documento}}</li>
+                <li class="list-group-item">Data de Vencimento: {{ object.data_de_vencimento }}</li>
+                <li class="list-group-item">Valor: {{ object.valor }}</li>
+                <li class="list-group-item">Status do Pagamento: {{ object.status_pagamento }}</li>
+                <li class="list-group-item">Tipo de pagamento: {{ object.tipo_de_pagamento }}</li>
+
+            </ul>
+        </div>
+        <div class="col-sm">
+            <ul class="list-group">
+            </ul>
+        </div>
+    </div>
+</div>
+
+
 {% endblock %}

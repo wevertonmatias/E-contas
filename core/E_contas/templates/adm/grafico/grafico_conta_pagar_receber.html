@@ -1,0 +1,50 @@
+{% extends 'adm/grafico/grafico_base.html' %}
+{% load static %}
+{% load l10n %}
+
+{% block link-3 %}
+> Contas a Pagar VS Receber
+{% endblock %}
+
+{% block div-main %}
+
+{% include 'adm/grafico/grafico_link.html' %}
+
+<canvas class="grafico_conta_pagar_receber"></canvas>
+<script>
+        var ctx = document.getElementsByClassName("grafico_conta_pagar_receber");
+        var ChartGraph = new Chart(ctx, {
+            type: 'bar',
+    data: {
+        labels: ['Pagar', 'Receber'],
+        datasets: [{
+            label: 'TOTAL de Contas a Pagar VS Receber',
+            data: [{{pagar.valor__sum.normalize|unlocalize}},
+                    {{receber.valor__sum.normalize|unlocalize}},
+                    ],
+            backgroundColor: [
+                'rgba(255, 99, 132, 0.2)',
+                'rgba(54, 162, 235, 0.2)',
+            ],
+            borderColor: [
+                'rgba(255, 99, 132, 1)',
+                'rgba(54, 162, 235, 1)',
+
+            ],
+            borderWidth: 1
+        }]
+    },
+    options: {
+        scales: {
+            yAxes: [{
+                ticks: {
+                    beginAtZero: true
+                }
+            }]
+        }
+    }
+});
+
+</script>
+
+{%endblock%}

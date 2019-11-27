@@ -10,14 +10,18 @@ from django.http import HttpResponseRedirect, JsonResponse
 import json
 from django.db.models import Sum
 
+
 class AdmBase(TemplateView):
     template_name = 'adm/comuns/adm_base.html'
+
 
 class Adm(TemplateView):
     template_name = 'adm/comuns/adm.html'
 
+
 class Cadastro(TemplateView):
     template_name = 'adm/cadastro/cadastro_base.html'
+
 
 class CadastroVenda(CreateView):
     template_name = 'adm/cadastro/venda.html'
@@ -26,6 +30,7 @@ class CadastroVenda(CreateView):
 
     def get_success_url(self):
         return reverse_lazy('lista_venda')
+
 
 class CadastroFornecedor(CreateView):
     template_name = 'adm/cadastro/fornecedor.html'
@@ -66,8 +71,10 @@ class CadastroPagamento(CreateView):
     #     formulario = form
     #     formulario.save(commit=False)
 
+
 class Gerenciamento(TemplateView):
     template_name = 'adm/gerenciamento/gerenciamento_base.html'
+
 
 class Lista(TemplateView):
     template_name = 'adm/lista/lista_base.html'
@@ -79,11 +86,13 @@ class ListaVenda(ListView):
     fields = '__all__'
     paginate_by = 10
 
+
 class ListarFornecedor(ListView):
     template_name = 'adm/lista/fornecedor.html'
     model = Fornecedor
     fields = '__all__'
     paginate_by = 10
+
 
 class ListaEmpresa(ListView):
     template_name = 'adm/gerenciamento/lista/empresa.html'
@@ -106,6 +115,7 @@ class AtualizaVenda(UpdateView):
     def get_success_url(self):
         return reverse_lazy('lista_venda')
 
+
 class AtualizarFornecedor(UpdateView):
     template_name = 'adm/atualiza/fornecedor.html'
     model = Fornecedor
@@ -124,18 +134,19 @@ class AtualizaEmpresa(UpdateView):
         return reverse_lazy('lista_empresa')
 
 
-class AtualizarPagamento(UpdateView):
-    template_name = 'adm/atualiza/pagamento.html'
+class AtualizaPagamento(UpdateView):
+    template_name = 'adm/gerenciamento/atualiza/pagamento.html'
     model = Pagamento
     fields = '__all__'
 
     def get_success_url(self):
-        return reverse_lazy('listar_pagamento')
+        return reverse_lazy('lista_pagamento')
 
 
 class DetalheVenda(DetailView):
     template_name = 'adm/gerenciamento/detalhe/venda.html'
     model = Venda
+
 
 class DetalheEmpresa(DetailView):
     template_name = 'adm/gerenciamento/detalhe/empresa.html'
@@ -148,8 +159,9 @@ class DetalheFornecedor(DetailView):
 
 
 class DetalhePagamento(DetailView):
-    template_name = 'adm/detalhe/pagamento.html'
+    template_name = 'adm/gerenciamento/detalhe/pagamento.html'
     model = Pagamento
+    field = '__all__'
 
 
 class DeletaVenda(DeleteView):
@@ -159,6 +171,7 @@ class DeletaVenda(DeleteView):
     def get_success_url(self):
         return reverse_lazy('lista_venda')
 
+
 class DeletaEmpresa(DeleteView):
     model = Empresa
     template_name = 'adm/gerenciamento/deleta/empresa.html'
@@ -166,26 +179,38 @@ class DeletaEmpresa(DeleteView):
     def get_success_url(self):
         return reverse_lazy('lista_empresa')
 
+
 class Grafico(TemplateView):
-    template_name = 'adm/graficos/grafico.html'
+    template_name = 'adm/grafico/grafico_base.html'
+
+
+class GraficoContaPagarReceber(TemplateView):
+    template_name = 'adm/grafico/grafico_conta_pagar_receber.html'
 
     def get_context_data(self, **kwargs):
-        ctx = super(Grafico, self).get_context_data(**kwargs)
-        ctx['empresas'] = Empresa.objects.all()
-        ctx['valores'] = Pagamento.objects.values('empresa_id').annotate(Sum('valor'))
+        ctx = super(GraficoContaPagarReceber, self).get_context_data(**kwargs)
         ctx['pagar'] = Pagamento.objects.aggregate(Sum('valor'))
         ctx['receber'] = Venda.objects.aggregate(Sum('valor'))
         return ctx
 
+class GraficoContaPagaPorEmpresa(TemplateView):
+    template_name = 'adm/grafico/grafico_paga_por_empresa.html'
+
+    def get_context_data(self, **kwargs):
+        ctx = super(GraficoContaPagaPorEmpresa, self).get_context_data(**kwargs)
+        ctx['empresas'] = Empresa.objects.all()
+        ctx['valores'] = Pagamento.objects.values('empresa_id').annotate(Sum('valor'))
+        return ctx
+
+
 class Relatorio(TemplateView):
     template_name = 'adm/relatorios/relatorio.html'
 
-class RelAPagar(ListView,PDFTemplateResponseMixin):
+
+class RelAPagar(ListView, PDFTemplateResponseMixin):
     template_name = 'adm/relatorios/a_pagar.html'
     model = Pagamento
     fields = '__all__'
-
-
 
 
 class Index(TemplateView):
@@ -220,6 +245,7 @@ class Acessar_conta(TemplateView):
 class Sistema(TemplateView):
     template_name = 'adm/sistema.html'
 
+
 #
 #     def get_context_data(self, **kwargs):
 #         ctx = super(Relatorio, self).get_context_data(**kwargs)
@@ -235,7 +261,7 @@ def GraficoPagamento(request):
         'empresas': json.dumps(empresas),
         'valores': json.dumps(valores),
     }
-    return render(request, 'site/graficos/grafico.html', context)
+    return render(request, 'site/grafico/grafico.html', context)
 
 
 class WebService(View):
@@ -249,6 +275,8 @@ class WebService(View):
             dicionario[item.sigla] = item.total
 
         return JsonResponse(dicionario)
+
+
 class CadastrarEvento(CreateView):
     template_name = 'adm/cadastro/evento.html'
     models = Evento
@@ -269,4 +297,3 @@ class CadastrarCategoriaEvento(CreateView):
 
     def get_success_url(self):
         return reverse_lazy('cadastrar_categoria_evento')
-
