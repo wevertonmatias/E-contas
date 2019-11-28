@@ -1,13 +1,24 @@
-{% extends 'admin/base.html' %}
-[% load bootstrap %}
-{% block content %}
-
-<h5>Código.{{object.pk}}</h5>
-<h3>Razão Social: {{ object.razao_social }}</h3>
-<h3>Nome Fantasia: {{ object.nome_fantasia }}</h3>
-<h3>CNPJ/CPF: {{object.cnpj_cpf}}</h3>
-<h3>Telefone: {{ object.telefone }}</h3>
-<h3>Tipo de Parceria: {{ object.tipo_de_parceria }}</h3>
-    <br>
-<a href="{% url 'listar_fornecedor' %}"> <input type="submit" value="Voltar"> </a>
+{% extends 'adm/gerenciamento/detalhe/detalhe_base.html' %}
+{% load bootstrap %}
+{% block link-4 %}
+> Fornecedor
 {% endblock %}
+{% block div-1 %}
+<div class="row">
+    <div class="container mb-1">
+        <a class="btn btn-success btn-md" href="{% url 'lista_fornecedor' %}">Voltar</a>
+        <a class="btn btn-secondary btn-md" href="{% url 'atualiza_fornecedor' fornecedor.pk %}">Editar</a>
+        <a class="btn btn-primary btn-md" href="{% url 'deleta_fornecedor' fornecedor.pk %}">Deletar</a>
+    </div>
+</div>
+<ul class="list-group">
+    <li class="list-group-item">Código. {{object.pk}}</li>
+    <li class="list-group-item">Razão Social: {{ object.razao_social }}</li>
+    <li class="list-group-item">Nome Fantasia: {{ object.nome_fantasia }}</li>
+    <li class="list-group-item">CNPJ/CPF: {{object.cnpj_cpf}}</li>
+    <li class="list-group-item">Telefone: {{object.telefone}}</li>
+    <li class="list-group-item">Tipo de parceria: {{object.tipo_de_parceria}}</li>
+</ul>
+
+{% endblock %}
+</div>

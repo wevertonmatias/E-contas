@@ -1,15 +1,15 @@
-{% extends 'admin/index.html' %}
+{% extends 'adm/cadastro/cadastro_base.html' %}
 {% load bootstrap %}
 
+{% block link-3 %}
+   > Fornecedor
+{% endblock %}
 
-{% block content %}
-    <h1>Cadastrar Fornecedor</h1>
-    <form method="post">
-        {% csrf_token %}
-        {{form|bootstrap}}
-        <br>
-    <input type="submit" value="Cadastrar">
-    </form>
-    <br>
-<a href="{% url 'listar_fornecedor' %}"> <input type="submit" value="Voltar"> </a>
+{% block div-1 %}
+<form method="post">
+    {% csrf_token %}
+    {{ form|bootstrap }}
+    <input class="btn btn-success btn-md btn-block" type="submit" value="Cadastrar">
+</form>
+<a class="btn btn-primary btn-md btn-block mt-1" href="{% url 'cadastro' %}">Voltar</a>
 {% endblock %}

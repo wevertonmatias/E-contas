@@ -87,11 +87,10 @@ class ListaVenda(ListView):
     paginate_by = 10
 
 
-class ListarFornecedor(ListView):
-    template_name = 'adm/lista/fornecedor.html'
+class ListaFornecedor(ListView):
+    template_name = 'adm/gerenciamento/lista/fornecedor.html'
     model = Fornecedor
     fields = '__all__'
-    paginate_by = 10
 
 
 class ListaEmpresa(ListView):
@@ -116,13 +115,13 @@ class AtualizaVenda(UpdateView):
         return reverse_lazy('lista_venda')
 
 
-class AtualizarFornecedor(UpdateView):
-    template_name = 'adm/atualiza/fornecedor.html'
+class AtualizaFornecedor(UpdateView):
+    template_name = 'adm/gerenciamento/atualiza/fornecedor.html'
     model = Fornecedor
     fields = '__all__'
 
     def get_success_url(self):
-        return reverse_lazy('listar_fornecedor')
+        return reverse_lazy('lista_fornecedor')
 
 
 class AtualizaEmpresa(UpdateView):
@@ -154,7 +153,7 @@ class DetalheEmpresa(DetailView):
 
 
 class DetalheFornecedor(DetailView):
-    template_name = 'adm/detalhe/fornecedor.html'
+    template_name = 'adm/gerenciamento/detalhe/fornecedor.html'
     model = Fornecedor
 
 
@@ -186,6 +185,13 @@ class DeletaPagamento(DeleteView):
     def get_success_url(self):
         return reverse_lazy('lista_pagamento')
 
+class DeletaFornecedor(DeleteView):
+    model = Fornecedor
+    template_name = 'adm/gerenciamento/deleta/fornecedor.html'
+
+    def get_success_url(self):
+        return reverse_lazy('lista_fornecedor')
+
 
 class Grafico(TemplateView):
     template_name = 'adm/grafico/grafico_base.html'
@@ -211,11 +217,11 @@ class GraficoContaPagaPorEmpresa(TemplateView):
 
 
 class Relatorio(TemplateView):
-    template_name = 'adm/relatorios/relatorio.html'
+    template_name = 'adm/relatorio/relatorio_base.html'
 
 
 class RelAPagar(ListView, PDFTemplateResponseMixin):
-    template_name = 'adm/relatorios/a_pagar.html'
+    template_name = 'adm/relatorio/a_pagar.html'
     model = Pagamento
     fields = '__all__'
 

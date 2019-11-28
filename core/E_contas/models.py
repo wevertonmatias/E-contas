@@ -55,7 +55,7 @@ class StatusDoPagamento(models.Model):
         return self.descricao
 
 class Pagamento(models.Model):
-    numero_documento = models.CharField(max_length=255, null=False, blank=False)
+    numero_documento = models.CharField(max_length=255, null=False, blank=False, verbose_name="Número documento (*)")
     descricao = models.CharField(max_length=255, null=False, blank=False)
     empresa = models.ForeignKey(Empresa, on_delete='SEL_NULL', null=False, blank=False)
     tipo_de_pagamento = models.ForeignKey(TipoPagamento, on_delete='SET_NULL', null=False, blank=False)

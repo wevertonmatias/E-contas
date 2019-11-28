@@ -1,0 +1,25 @@
+{% extends 'adm/gerenciamento/deleta/deleta_base.html' %}
+{% load bootstrap %}
+{% block link-4 %}
+> Fornecedor
+{% endblock %}
+{% block div-1 %}
+
+<form method="post">
+    {% csrf_token %}
+    {{ form }}
+    <ul class="list-group">
+        <li class="list-group-item">Código. {{object.pk}}</li>
+        <li class="list-group-item">Razão Social: {{ object.razao_social }}</li>
+        <li class="list-group-item">Nome Fantasia: {{ object.nome_fantasia }}</li>
+        <li class="list-group-item">CNPJ/CPF: {{object.cnpj_cpf}}</li>
+        <li class="list-group-item">Telefone: {{object.telefone}}</li>
+        <li class="list-group-item">Tipo de parceria: {{object.tipo_de_parceria}}</li>
+    </ul>
+    <input class="btn btn-primary btn-md btn-block mt-1" type="submit" value="Deletar">
+    <a class="btn btn-success btn-md btn-block" href="{% url 'lista_fornecedor' %}">Voltar</a>
+</form>
+
+{% endblock %}
+</div>
+

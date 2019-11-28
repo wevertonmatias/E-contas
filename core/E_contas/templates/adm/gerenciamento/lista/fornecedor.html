@@ -1,21 +1,53 @@
-{% extends 'admin/base.html' %}
-[% load bootstrap %}
-{% block content %}
-    <a href="{% url 'sistema' %}"><h1>Painel Gerenciador</h1></a>
-    <h1>Lista de Fornecedores</h1>
-    <h1><a href="{% url 'cadastrar_fornecedor' %}"> Cadastrar Fornecedor +</a></h1>
+{% extends 'adm/gerenciamento/lista/lista_base.html'%}
 
-    {% for fornecedor in object_list %}
-        <div style="border:1px solid;padding-left:5px; margin-bottom:5px:5px">
-            <h3>{{ fornecedor.razao_social }}</h3>
-            <h2>Razao Social</h2>
-            <h2>Nome Fantasia</h2>
-            <h3>{{ fornecedor.nome_fantasia }}</h3>
-            <a href="{% url 'atualizar_fornecedor' fornecedor.pk %}"> Atualizar Fornecedor</a>
-            <br>
-            <a href="{% url 'detalhe_fornecedor' fornecedor.pk %}">Mostrar Mais</a>
-        </div>
-    {% endfor %}
+{% block link-4 %}
+> Fornecedores
+{% endblock %}
+{% block div-main %}
+
+<div class="container-fluid">
+    <a class="btn btn-success text-white m-1" href="{% url 'cadastro_fornecedor' %}">
+        <h7>Cadastrar Fornecedor <i class="fas fa-plus-circle"></i></h7>
+    </a>
+
+    <div class="table-responsive">
+        <table class="table">
+            <thead class="thead-light">
+            <tr>
+                <th>ID</th>
+                <th scope="col">Razão Social</th>
+                <th scope="col">Nome Fantasia</th>
+                <th scope="col"> Editar</th>
+                <th scope="col"> Detalhes</th>
+                <th scope="col"> Deletar</th>
+            </tr>
+            </thead>
+            <tbody>
+            {% for fornecedor in object_list%}
+            <tr>
+                <th scope="row">{{ fornecedor.id}}</th>
+                <td>{{ fornecedor.razao_social }}</td>
+                <td>{{ fornecedor.nome_fantasia }}</td>
+                <td>
+                    <a class="text-dark" title="Editar Fornecedor" href="{% url 'atualiza_fornecedor' fornecedor.pk %}">
+                        <i class="fas fa-edit"></i>
+                    </a>
+                </td>
+                <td><a class="text-dark" title="Mostrar Detalhes" href="{% url 'detalhe_fornecedor' fornecedor.pk %}">
+                    <i class="fas fa-list-alt"></i>
+                </a>
+                </td>
+                <td><a title="Deletar Fornecedor" class="fas fa-trash-alt"
+                       href="{% url 'deleta_fornecedor' fornecedor.pk%}"></a>
+                </td>
+            </tr>
+            {% endfor %}
+            </tbody>
+        </table>
+    </div>
+</div>
 
 
 {% endblock %}
+
+
