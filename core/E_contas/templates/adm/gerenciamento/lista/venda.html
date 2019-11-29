@@ -47,31 +47,27 @@
         </table>
     </div>
 </div>
-
-{% endblock %}
-
-
-{% if is_paginated %}
-<div class="pagination container"
-     style="border-top: 1px solid gray; padding-top:25px;margin-top: 25px; margin-bottom: 25px;">
+<p class="paginator">
+    {% if is_paginated %}
+<div>
     <span class="page-links">
-        <div class="col-md-5">
-        {% if page_obj.has_previous %}
-        <a href="?page={{ page_obj.previous_page_number }}" class="btn btn-default btn-flat">Anterior</a>
-        {% endif %}
+        <div class="row">
+            <div class="col-sm">
+                {% if page_obj.has_previous %}
+                <a href="?page={{ page_obj.previous_page_number }}" class="btn btn-secondary">Anterior</a>
+                {% endif %}
+            </div>
+            {% if page_obj.has_next %}
+            <div class="col-sm">
+                <a href="?page={{ page_obj.next_page_number }}" class="btn btn-secondary">Próximo</a>
+            </div>
+            {% endif %}
+            <span class="page-current">
+                Página {{ page_obj.number }} de {{ page_obj.paginator.num_pages }}.
+            </span>
         </div>
-    <div class="col-md-5">
-    <span class="page-current">
-        Página {{ page_obj.number }} de {{ page_obj.paginator.num_pages }}.
-    </span>
-    </div>
-    {% if page_obj.has_next %}
-        <div class="col-md-2">
-        <a href="?page={{ page_obj.next_page_number }}" class="btn btn-default btn-flat ">Próximo</a>
-    </div>
-    {% endif %}
     </span>
 </div>
 {% endif %}
-
-
+</p>
+{% endblock %}

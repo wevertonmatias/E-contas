@@ -37,13 +37,8 @@ class CadastroFornecedor(CreateView):
     model = Fornecedor
     fields = '__all__'
 
-    # form_class = FornecedorForm
     def get_success_url(self):
-        return reverse_lazy('listar_fornecedor')
-
-    # def from_valid(self, form):
-    #     formulario = form
-    #     formulario.save(commit=False)
+        return reverse_lazy('lista_fornecedor')
 
 
 class CadastroEmpresa(CreateView):
@@ -51,10 +46,8 @@ class CadastroEmpresa(CreateView):
     model = Empresa
     fields = '__all__'
 
-    # form_class = EmpresaForm
-    #
     def get_success_url(self):
-        return reverse_lazy('cadastro')
+        return reverse_lazy('lista_empresa')
 
 
 class CadastroPagamento(CreateView):
@@ -62,29 +55,19 @@ class CadastroPagamento(CreateView):
     model = Pagamento
     fields = '__all__'
 
-    # form_class = EmpresaForm
-
     def get_success_url(self):
         return reverse_lazy('lista_pagamento')
-
-    # def from_valid(self, form):
-    #     formulario = form
-    #     formulario.save(commit=False)
 
 
 class Gerenciamento(TemplateView):
     template_name = 'adm/gerenciamento/gerenciamento_base.html'
 
 
-class Lista(TemplateView):
-    template_name = 'adm/lista/lista_base.html'
-
-
 class ListaVenda(ListView):
     template_name = 'adm/gerenciamento/lista/venda.html'
     model = Venda
     fields = '__all__'
-    paginate_by = 10
+    paginate_by = 2
 
 
 class ListaFornecedor(ListView):
