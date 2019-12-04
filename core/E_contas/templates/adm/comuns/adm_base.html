@@ -44,3 +44,12 @@
 </div>
 {% endblock %}
 {% include 'site/common/script.html' %}
+
+{% block extrahead %}
+    {% include 'adm/comuns/head_adm_base.html' %}
+
+    {% block script %}
+
+    {% endblock %}
+
+{% endblock %}

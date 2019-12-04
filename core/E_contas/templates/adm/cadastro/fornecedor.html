@@ -5,6 +5,11 @@
 > Fornecedor
 {% endblock %}
 
+{% block script %}
+    {% include 'site/common/script.html' %}
+    {% include 'adm/comuns/mascara_adm_base.html' %}
+{% endblock %}
+
 {% block div-1 %}
 <form method="post">
     <label class="text-danger">Os campos com (*) são obrigatórios</label>

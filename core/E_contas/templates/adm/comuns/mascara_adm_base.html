@@ -1,0 +1,26 @@
+<script type="text/javascript">
+		$(document).ready(function(){
+			$("#id_telefone").mask("(00) 0000-0000")
+			$("#id_valor").mask("999999.00", {reverse: true})
+			$("#id_valor_juros").mask("999999.00", {reverse: true})
+			$("#id_parcelas").mask("0")
+			$("#id_parcela").mask("0")
+			$("#id_competencia").mask("00/0000")
+			$("#id_data").mask("00/00/0000")
+			$("#id_data_de_vencimento").mask("00/00/0000")
+			$("#id_data_de_pagamento").mask("00/00/0000")
+            
+			$("#id_cnpj_cpf").mask("00.000.000/0000-00")
+
+			var options = {
+            onKeyPress: function (cpf, ev, el, op) {
+                var masks = ['000.000.000-000', '00.000.000/0000-00'];
+                $('#id_cnpj_cpf').mask((cpf.length > 14) ? masks[1] : masks[0], op);
+            }
+            }
+
+            $('#id_cnpj_cpf').length > 11 ? $('.cpfOuCnpj').mask('00.000.000/0000-00', options) : 
+            $('#id_cnpj_cpf').mask('000.000.000-00#', options);
+            
+		  })
+</script>

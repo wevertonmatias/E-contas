@@ -1,16 +1,26 @@
 {% extends 'adm/cadastro/cadastro_base.html' %}
+{% load static %}
+
 {% load bootstrap %}
 
 {% block link-3 %}
-   > Empresa
+> Empresa
 {% endblock %}
 
+{% block script %}
+    {% include 'site/common/script.html' %}
+    {% include 'adm/comuns/mascara_adm_base.html' %}
+{% endblock %}
+
+
 {% block div-1 %}
-<label class="text-danger" >Os campos com (*) são obrigatórios</label>
+<label class="text-danger">Os campos com (*) são obrigatórios</label>
 <form method="post">
     {% csrf_token %}
     {{ form|bootstrap }}
     <input class="btn btn-success btn-md btn-block" type="submit" value="Cadastrar">
 </form>
 <a class="btn btn-primary btn-md btn-block mt-1" href="{% url 'cadastro' %}">Voltar</a>
+
 {% endblock %}
+

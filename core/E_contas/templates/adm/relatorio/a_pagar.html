@@ -41,6 +41,9 @@
         <th>Descrição</th>
 		<th>Empresa</th>
 		<th>Fornecedor</th>
+		<th>Vencimento</th>
+		<th>Valor</th>
+		<th>Status do Pagamento</th>
 	</tr>
 	</thead>
 	<tbody>
@@ -52,6 +55,9 @@
             <td>{{pagamento.descricao}}</td>
             <td>{{pagamento.empresa}}</td>
             <td>{{pagamento.fornecedor}}</td>
+            <td>{{pagamento.data_de_vencimento}}</td>
+            <td>{{pagamento.valor}}</td>
+            <td>{{pagamento.status_pagamento}}</td>
         </tr>
         {% endfor %}
 	</tbody>
