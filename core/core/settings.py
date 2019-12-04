@@ -117,8 +117,8 @@ STATICFILES_DIRS = [
 
 # CONFIGURAÇÕES PERSONALIZADAS
 DATE_INPUT_FORMATS = ['%d/%m/%Y']
-# CONFIGURAÇÕES DO ADM-BATON
 
+# CONFIGURAÇÕES DO ADM-BATON
 BATON = {
     'SITE_HEADER': 'E-Contas',
     'SITE_TITLE': 'E-Contas',
@@ -157,7 +157,7 @@ BATON = {
             {'type': 'free', 'label': 'Pagamentos', 'url': 'http://127.0.0.1:8000/econtas/adm/cadastro/pagamento'},
             {'type': 'free', 'label': 'Empresas', 'url': 'http://127.0.0.1:8000/econtas/adm/cadastro/empresa/'},
             {'type': 'free', 'label': 'Fornecedores', 'url': 'http://127.0.0.1:8000/econtas/adm/cadastro/fornecedor/'},
-            {'type': 'free', 'label': 'Local de Pagamento', 'url': ''},
+            {'type': 'free', 'label': 'Local de Recebimento', 'url': 'http://127.0.0.1:8000/econtas/adm/cadastro/local_de_recebimento'},
         ]},
         {'type': 'free', 'icon': 'fas fa-edit', 'label': 'Listar/Atualizar/Deletar', 'children': [
             {'type': 'model', 'label': 'A Model', 'name': 'mymodelname', 'app': 'myapp', 'icon': 'fa fa-gavel'},
@@ -165,7 +165,7 @@ BATON = {
             {'type': 'free', 'label': 'Pagamentos', 'url': 'http://127.0.0.1:8000/econtas/adm/lista/pagamento'},
             {'type': 'free', 'label': 'Empresas', 'url': 'http://127.0.0.1:8000/econtas/adm/lista/empresa/'},
             {'type': 'free', 'label': 'Fornecedores', 'url': 'http://127.0.0.1:8000/econtas/adm/lista/fornecedor/'},
-            {'type': 'free', 'label': 'Local de Pagamento', 'url': ''},
+            {'type': 'free', 'label': 'Local de Recebimento', 'url': 'http://127.0.0.1:8000/econtas/adm/lista/local_recebimento'},
         ]},
 
     ),

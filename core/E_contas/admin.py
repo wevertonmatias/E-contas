@@ -7,7 +7,7 @@ from django.contrib import admin
 admin.site.register(Pagamento)
 admin.site.register(Fornecedor)
 admin.site.register(Empresa)
-admin.site.register(LocalPagamento)
+admin.site.register(LocalRecebimento)
 admin.site.register(TipoPagamento)
 admin.site.register(StatusDoPagamento)
 # admin.site.register(Banner)

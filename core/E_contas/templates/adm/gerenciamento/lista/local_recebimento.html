@@ -1,0 +1,60 @@
+{% extends 'adm/gerenciamento/lista/lista_base.html'%}
+
+{% block link-4 %}
+> Local de Recebimento
+{% endblock %}
+{% block div-main %}
+
+<div class="container-fluid">
+    <a class="btn btn-success text-white m-1" href="{% url 'cadastro_local_recebimento' %}">
+        <h7>Cadastrar Local de Recebimento <i class="fas fa-plus-circle"></i></h7>
+    </a>
+
+    <div class="table-responsive">
+        <table class="table">
+            <thead class="thead-light">
+            <tr>
+                <th>ID</th>
+                <th scope="col">Tilulo</th>
+                <th scope="col">Administradora de Cartão</th>
+                <th scope="col"> Bandeira Cartão</th>
+                <th scope="col"> Modo de Pagamento</th>
+                <th scope="col"> Editar</th>
+                <th scope="col"> Detalhes</th>
+                <th scope="col"> Deletar</th>
+            </tr>
+            </thead>
+            <tbody>
+            {% for recebimento in object_list%}
+            <tr>
+                <th scope="row">{{ recebimento.id}}</th>
+                <td>{{ recebimento.titulo }}</td>
+                <td>{{ recebimento.adm_cartao }}</td>
+                <td>{{ recebimento.bandeira_cartao }}</td>
+                <td>{{ recebimento.modo_pagamento }}</td>
+                <td>
+                    <a class="text-dark" title="Editar Local de Recebimento"
+                       href="{% url 'atualiza_local_recebimento' recebimento.pk %}">
+                        <i class="fas fa-edit"></i>
+                    </a>
+                </td>
+                <td><a class="text-dark" title="Mostrar Detalhes"
+                       href="{% url 'detalhe_local_recebimento' recebimento.pk %}">
+                    <i class="fas fa-list-alt"></i>
+                </a>
+                </td>
+                <td><a title="Deletar Local de Recebimento" class="fas fa-trash-alt"
+                       href="{% url 'deleta_local_recebimento' recebimento.pk %}"></a>
+                </td>
+            </tr>
+
+            {% endfor %}
+            </tbody>
+        </table>
+    </div>
+</div>
+
+
+{% endblock %}
+
+

@@ -59,6 +59,15 @@ class CadastroPagamento(CreateView):
         return reverse_lazy('lista_pagamento')
 
 
+class CadastroLocalRecebimento(CreateView):
+    template_name = 'adm/cadastro/local_recebimento.html'
+    model = LocalRecebimento
+    fields = '__all__'
+
+    def get_success_url(self):
+        return reverse_lazy('lista_local_recebimento')
+
+
 class Gerenciamento(TemplateView):
     template_name = 'adm/gerenciamento/gerenciamento_base.html'
 
@@ -86,6 +95,12 @@ class ListaEmpresa(ListView):
 class ListaPagamento(ListView):
     template_name = 'adm/gerenciamento/lista/pagamento.html'
     model = Pagamento
+    fields = '__all__'
+
+
+class ListaLocalRecebimento(ListView):
+    template_name = 'adm/gerenciamento/lista/local_recebimento.html'
+    model = LocalRecebimento
     fields = '__all__'
 
 
@@ -125,6 +140,15 @@ class AtualizaPagamento(UpdateView):
         return reverse_lazy('lista_pagamento')
 
 
+class AtualizaLocalRecebimento(UpdateView):
+    template_name = 'adm/gerenciamento/atualiza/local_recebimento.html'
+    model = LocalRecebimento
+    fields = '__all__'
+
+    def get_success_url(self):
+        return reverse_lazy('lista_local_recebimento')
+
+
 class DetalheVenda(DetailView):
     template_name = 'adm/gerenciamento/detalhe/venda.html'
     model = Venda
@@ -146,6 +170,12 @@ class DetalhePagamento(DetailView):
     field = '__all__'
 
 
+class DetalheLocalRecebimento(DetailView):
+    template_name = 'adm/gerenciamento/detalhe/local_recebimento.html'
+    model = LocalRecebimento
+    field = '__all__'
+
+
 class DeletaVenda(DeleteView):
     model = Venda
     template_name = 'adm/gerenciamento/deleta/venda.html'
@@ -161,6 +191,7 @@ class DeletaEmpresa(DeleteView):
     def get_success_url(self):
         return reverse_lazy('lista_empresa')
 
+
 class DeletaPagamento(DeleteView):
     model = Pagamento
     template_name = 'adm/gerenciamento/deleta/pagamento.html'
@@ -168,12 +199,21 @@ class DeletaPagamento(DeleteView):
     def get_success_url(self):
         return reverse_lazy('lista_pagamento')
 
+
 class DeletaFornecedor(DeleteView):
     model = Fornecedor
     template_name = 'adm/gerenciamento/deleta/fornecedor.html'
 
     def get_success_url(self):
         return reverse_lazy('lista_fornecedor')
+
+
+class DeletaLocalRecebimento(DeleteView):
+    model = LocalRecebimento
+    template_name = 'adm/gerenciamento/deleta/local_recebimento.html'
+
+    def get_success_url(self):
+        return reverse_lazy('lista_local_recebimento')
 
 
 class Grafico(TemplateView):
@@ -188,6 +228,7 @@ class GraficoContaPagarReceber(TemplateView):
         ctx['pagar'] = Pagamento.objects.aggregate(Sum('valor'))
         ctx['receber'] = Venda.objects.aggregate(Sum('valor'))
         return ctx
+
 
 class GraficoContaPagaPorEmpresa(TemplateView):
     template_name = 'adm/grafico/grafico_paga_por_empresa.html'
@@ -222,10 +263,6 @@ class Home_admin(TemplateView):
     template_name = 'adm/home_admin.html'
 
 
-class Quem_somos(TemplateView):
-    template_name = 'site/quem-somos.html'
-
-
 class Contato(TemplateView):
     template_name = 'site/contato.html'
 
@@ -240,24 +277,6 @@ class Acessar_conta(TemplateView):
 
 class Sistema(TemplateView):
     template_name = 'adm/sistema.html'
-
-
-#
-#     def get_context_data(self, **kwargs):
-#         ctx = super(Relatorio, self).get_context_data(**kwargs)
-#         ctx['boletos'] = Boleto.objects.all()
-#         return ctx
-
-def GraficoPagamento(request):
-    queryset = Pagamento.objects.all()
-    empresas = [obj.empresa.pk for obj in queryset]
-    valores = [int(obj.valor) for obj in queryset]
-
-    context = {
-        'empresas': json.dumps(empresas),
-        'valores': json.dumps(valores),
-    }
-    return render(request, 'site/grafico/grafico.html', context)
 
 
 class WebService(View):

@@ -1,0 +1,23 @@
+{% extends 'adm/gerenciamento/deleta/deleta_base.html' %}
+{% load bootstrap %}
+{% block link-4 %}
+> Local de Recebimento
+{% endblock %}
+{% block div-1 %}
+
+<form method="post">
+    {% csrf_token %}
+    {{ form }}
+    <ul class="list-group">
+        <li class="list-group-item">Código. {{object.pk}}</li>
+        <li class="list-group-item">Título: {{ object.titulo }}</li>
+        <li class="list-group-item">Administradora de Cartão: {{ object.adm_cartao }}</li>
+        <li class="list-group-item">Bandeira do Cartão: {{object.bandeira_cartao}}</li>
+        <li class="list-group-item">Mode de Pagamento: {{object.modo_pagamento}}</li>
+    </ul>
+    <input class="btn btn-primary btn-md btn-block mt-1" type="submit" value="Deletar">
+    <a class="btn btn-success btn-md btn-block" href="{% url 'lista_local_recebimento' %}">Voltar</a>
+</form>
+{% endblock %}
+</div>
+

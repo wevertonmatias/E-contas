@@ -23,7 +23,7 @@ class Empresa(models.Model):
     def __str__(self):
         return self.razao_social
 
-class LocalPagamento(models.Model):
+class LocalRecebimento(models.Model):
     titulo = models.CharField(max_length=255, null=False, blank=False)
     adm_cartao = models.CharField(max_length=255, null=False, blank=False)
     bandeira_cartao = models.CharField(max_length=255, null=False, blank=False)
@@ -35,7 +35,7 @@ class Venda(models.Model):
     valor = models.DecimalField(max_digits=9, decimal_places=2, null=False, blank=False)
     parcelas = models.IntegerField(null=False, blank=False)
     data = models.DateField(max_length=255, null=False, blank=False)
-    local_de_pagamento = models.ForeignKey(LocalPagamento, on_delete="SET_NULL", null=False, blank=False)
+    local_de_pagamento = models.ForeignKey(LocalRecebimento, on_delete="SET_NULL", null=False, blank=False)
     empresa = models.ForeignKey(Empresa, on_delete="SET_NULL", null=False, blank=False)
 
     def __str__(self):
