@@ -5,6 +5,7 @@
 {% load bootstrap %}
 
 {% block div-1 %}
+<label class="text-danger" >Os campos com (*) são obrigatórios</label>
     <form method="post">
         {% csrf_token %}
         {{ form|bootstrap }}

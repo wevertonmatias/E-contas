@@ -14,5 +14,6 @@ admin.site.register(StatusDoPagamento)
 admin.site.register(Cidade)
 admin.site.register(Estado)
 admin.site.register(Venda)
+admin.site.register(ModoDePagamento)
 
 

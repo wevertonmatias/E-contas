@@ -5,7 +5,7 @@
 {% endblock %}
 
 {% block div-1 %}
-<form method="post">
+<label class="text-danger">Os campos com (*) são obrigatórios</label><form method="post">
 {% csrf_token %}
 {{ form | bootstrap }}
 <input class="btn btn-primary btn-md btn-block" type="submit" value="Editar">

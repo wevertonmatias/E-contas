@@ -1,14 +1,15 @@
 {%extends 'adm/gerenciamento/atualiza/atualiza_base.html'%}
 {% load bootstrap %}
 {% block link-4 %}
-   > Empresa
+> Empresa
 {% endblock %}
 
 {% block div-1 %}
+<label class="text-danger">Os campos com (*) são obrigatórios</label>
 <form method="post">
-{% csrf_token %}
-{{ form | bootstrap }}
-<input class="btn btn-primary btn-md btn-block" type="submit" value="Editar">
+    {% csrf_token %}
+    {{ form | bootstrap }}
+    <input class="btn btn-primary btn-md btn-block" type="submit" value="Editar">
 </form>
 <a class="btn btn-success btn-md btn-block mt-1" href="{% url 'lista_empresa' %}">Voltar</a>
 {% endblock %}

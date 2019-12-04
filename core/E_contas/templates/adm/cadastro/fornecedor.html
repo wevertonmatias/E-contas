@@ -2,11 +2,12 @@
 {% load bootstrap %}
 
 {% block link-3 %}
-   > Fornecedor
+> Fornecedor
 {% endblock %}
 
 {% block div-1 %}
 <form method="post">
+    <label class="text-danger">Os campos com (*) são obrigatórios</label>
     {% csrf_token %}
     {{ form|bootstrap }}
     <input class="btn btn-success btn-md btn-block" type="submit" value="Cadastrar">
