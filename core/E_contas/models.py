@@ -35,11 +35,11 @@ class Venda(models.Model):
     valor = models.DecimalField(max_digits=9, decimal_places=2, null=False, blank=False)
     parcelas = models.IntegerField(null=False, blank=False)
     data = models.DateField(max_length=255, null=False, blank=False)
-    local_de_pagamento = models.ForeignKey(LocalRecebimento, on_delete="SET_NULL", null=False, blank=False)
+    local_de_recebimento = models.ForeignKey(LocalRecebimento, on_delete="SET_NULL", null=False, blank=False)
     empresa = models.ForeignKey(Empresa, on_delete="SET_NULL", null=False, blank=False)
 
     def __str__(self):
-        return "R${} - Data:{} - Local de Pagamento:{}".format(self.valor, self.data, self.local_de_pagamento)
+        return "R${} - Data:{} - Local de Recebimento:{}".format(self.valor, self.data, self.local_de_recebimento)
 
 
 class TipoPagamento(models.Model):
