@@ -53,8 +53,29 @@
         </table>
     </div>
 </div>
-
-
+<p class="paginator">
+    {% if is_paginated %}
+<div>
+    <span class="page-links">
+        <div class="row">
+            <div class="col-sm">
+                {% if page_obj.has_previous %}
+                <a href="?page={{ page_obj.previous_page_number }}" class="btn btn-secondary">Anterior</a>
+                {% endif %}
+            </div>
+            {% if page_obj.has_next %}
+            <div class="col-sm">
+                <a href="?page={{ page_obj.next_page_number }}" class="btn btn-secondary">Próximo</a>
+            </div>
+            {% endif %}
+            <span class="page-current">
+                Página {{ page_obj.number }} de {{ page_obj.paginator.num_pages }}.
+            </span>
+        </div>
+    </span>
+</div>
+{% endif %}
+</p>
 {% endblock %}
 
 

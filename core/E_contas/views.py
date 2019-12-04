@@ -83,25 +83,28 @@ class ListaFornecedor(ListView):
     template_name = 'adm/gerenciamento/lista/fornecedor.html'
     model = Fornecedor
     fields = '__all__'
+    paginate_by = 2
 
 
 class ListaEmpresa(ListView):
     template_name = 'adm/gerenciamento/lista/empresa.html'
     model = Empresa
     fields = '__all__'
-    paginate_by = 10
+    paginate_by = 2
 
 
 class ListaPagamento(ListView):
     template_name = 'adm/gerenciamento/lista/pagamento.html'
     model = Pagamento
     fields = '__all__'
+    paginate_by = 2
 
 
 class ListaLocalRecebimento(ListView):
     template_name = 'adm/gerenciamento/lista/local_recebimento.html'
     model = LocalRecebimento
     fields = '__all__'
+    paginate_by = 2
 
 
 class AtualizaVenda(UpdateView):
